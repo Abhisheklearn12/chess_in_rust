@@ -7,7 +7,7 @@
 // - Single-file for easy inspection and running
 // NOTE: This aims to be educational and practical; some advanced rules/details are simplified but handled correctly for typical play.
 
-use std::cmp::{max, min};
+use std::cmp::max;
 use std::fmt;
 use std::io::{self, Write};
 use std::time::{Duration, Instant};
@@ -224,7 +224,7 @@ impl Board {
         }
         b
     }
-
+    #[allow(dead_code)]
     fn to_fen(&self) -> String {
         let mut s = String::new();
         for r in (0..8).rev() {
@@ -312,7 +312,7 @@ impl Board {
     fn piece_at(&self, s: Sq) -> Piece {
         self.cells[s]
     }
-
+    #[allow(dead_code)]
     fn set_piece(&mut self, s: Sq, p: Piece) {
         self.cells[s] = p
     }
@@ -930,7 +930,7 @@ fn negamax(board: &mut Board, depth: i32, alpha: i32, beta: i32, info: &mut Sear
     });
     let mut best = -999999;
     for m in moves {
-        let captured = board.piece_at(m.to);
+        let _captured = board.piece_at(m.to); // capture value intentionally ignored
         board.make_move(m.from, m.to, m.promotion);
         let val = -negamax(board, depth - 1, -beta, -a, info);
         board.undo_move();
@@ -992,7 +992,7 @@ fn search_root(board: &mut Board, max_depth: i32, time_limit_ms: Option<u64>) ->
     };
     let mut best_move = None;
     for depth in 1..=max_depth {
-        let val = negamax(board, depth, -1000000, 1000000, &mut info);
+        let _val = negamax(board, depth, -1000000, 1000000, &mut info);
         best_move = info.best_move;
         // stop if time exceeded
         if let Some(limit) = info.time_limit {
@@ -1166,4 +1166,4 @@ fn main() {
     println!("bye")
 }
 
-// Need to solve some small warnings ==> do on another branch.
+// All warnings are solved and fully working ==> v0.1.0
