@@ -17,4 +17,35 @@
 | 🧩 **Castling, promotion, en passant support** | ✅ Yes                 | All explicitly implemented.                                                                                                                                                                                     |
 | 🔄 **Iterative deepening (limited)**           | ⚠️ Partial            | `search_root()` iterates over depths but without transposition tables. Still true to “depth search.”                                                                                                            |
 | 🧮 **No unsafe, no macros**                    | ✅ Yes                 | Pure safe Rust, no macros or `unsafe` blocks.                                                                                                                                                                   |
-## Gradually will add some more features, as I learn chess gradually, need to learn this sport in my own wayy.
+### Note: Gradually will add some more features, as I learn chess gradually, need to learn this sport in my own wayy.
+
+### **Notes / Future Work**
+
+1. **Proof-of-Concept (PoC)** ==>
+   This is still an early, educational version of the engine.
+   It’s designed to be simple, readable, and technically correct, not yet optimized for strength or modularity.
+
+2. **Maintainability & Modularity** ==>
+   The current implementation is monolithic (~1K LOC, single file) by design for clarity.
+   Future iterations will gradually move toward a cleaner module-based structure (`board.rs`, `search.rs`, `eval.rs`, etc.) for maintainability and extensibility.
+
+3. **Feature Expansion** ==>
+   Planned additions include:
+
+   * Transposition tables (Zobrist hashing)
+   * Move ordering heuristics (MVV-LVA, killer moves)
+   * Improved evaluation (piece-square tables, mobility, king safety)
+   * Time management and iterative deepening
+   * Basic UCI protocol support for GUI integration
+
+4. **Performance Tuning** ==>
+   Although fully functional, this version prioritizes correctness and simplicity over raw speed.
+   Future updates will include optimizations, profiling, and search pruning techniques.
+
+5. **Educational Focus** ==>
+   The goal of this project is to deeply understand how chess engines and search algorithms work under the hood, using Rust as a systems-level learning ground.
+
+---
+
+> This engine isn’t meant to beat Stockfish, it’s meant to help *understand* why Stockfish works.
+---
