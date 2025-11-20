@@ -87,7 +87,7 @@ Type any of the following:
 ### Here's the Output:
  ![Output Image](media/chess_1.png)
 
- ![Output Image](media/chess_2.png)
+ ![Output Image](media/chess_tests.png)
 ### **Notes / Future Work**
 
 1. **Proof-of-Concept (PoC)** ==>
